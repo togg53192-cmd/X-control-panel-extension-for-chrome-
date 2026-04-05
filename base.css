@@ -1,0 +1,345 @@
+/* ========================================
+   X Control Panel — Base Injected Styles v4
+   ======================================== */
+
+/* ========== MEDIA PROTECTION ==========
+   CRITICAL: Never let themes affect images, videos, or media content.
+   These rules have highest specificity to override any theme. */
+[data-testid="tweetPhoto"] img,
+[data-testid="tweetPhoto"] video,
+[data-testid="videoPlayer"] video,
+[data-testid="videoPlayer"] img,
+[data-testid="previewInterstitial"] img,
+article[data-testid="tweet"] img[src*="pbs.twimg.com/media"],
+article[data-testid="tweet"] img[src*="pbs.twimg.com/ext_tw_video_thumb"],
+article[data-testid="tweet"] img[src*="pbs.twimg.com/tweet_video_thumb"],
+article[data-testid="tweet"] img[src*="pbs.twimg.com/amplify_video_thumb"],
+article[data-testid="tweet"] video,
+[data-testid="card.wrapper"] img,
+[data-testid="card.layoutLarge.media"] img,
+[data-testid="card.layoutSmall.media"] img {
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  visibility: visible !important;
+  display: initial !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: inherit !important;
+}
+
+/* Protect media container divs too */
+[data-testid="tweetPhoto"],
+[data-testid="videoPlayer"],
+[data-testid="card.wrapper"] {
+  filter: none !important;
+  opacity: 1 !important;
+  background: transparent !important;
+}
+
+/* Smooth transitions */
+.xcp-smooth-animations *:not(img):not(video):not([data-testid="tweetPhoto"] *):not([data-testid="videoPlayer"] *) {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+              opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+/* ========== COMPACT MODE ========== */
+.xcp-compact [data-testid="cellInnerDiv"] {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+.xcp-compact article[data-testid="tweet"] {
+  padding: 8px 12px !important;
+}
+
+/* ========== HIDE PROMOTED ========== */
+.xcp-hide-promoted [data-testid="placementTracking"] {
+  display: none !important;
+}
+
+/* ========== HIDE WHO TO FOLLOW ========== */
+.xcp-hide-who-to-follow [data-testid="UserCell"] {
+  display: none !important;
+}
+
+/* ========== HIDE TOPICS ========== */
+.xcp-hide-topics [data-testid="trend"],
+.xcp-hide-topics a[href*="/i/topics"] {
+  display: none !important;
+}
+
+/* ========== HOVER EFFECTS ========== */
+.xcp-hover-lift article[data-testid="tweet"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+}
+
+.xcp-hover-glow article[data-testid="tweet"]:hover {
+  box-shadow: 0 0 20px rgba(123, 97, 255, 0.2) !important;
+}
+
+.xcp-hover-border-left article[data-testid="tweet"]:hover {
+  border-left: 3px solid var(--xcp-accent, #7b61ff) !important;
+}
+
+.xcp-hover-scale article[data-testid="tweet"]:hover {
+  transform: scale(1.005) !important;
+}
+
+/* ========== GLOW EFFECTS ========== */
+.xcp-glow [data-testid="like"] svg:hover,
+.xcp-glow [data-testid="retweet"] svg:hover,
+.xcp-glow [data-testid="reply"] svg:hover {
+  filter: drop-shadow(0 0 8px currentColor) !important;
+}
+
+/* ========== SMOOTH SCROLL ========== */
+.xcp-smooth-scroll {
+  scroll-behavior: smooth !important;
+}
+
+/* ========== RAINBOW LIKES ========== */
+@keyframes xcp-rainbow {
+  0% { filter: hue-rotate(0deg) drop-shadow(0 0 4px currentColor); }
+  100% { filter: hue-rotate(360deg) drop-shadow(0 0 8px currentColor); }
+}
+
+.xcp-rainbow-likes [data-testid="like"][aria-pressed="true"] svg {
+  animation: xcp-rainbow 2s linear infinite !important;
+}
+
+/* ========== PARTICLE BURST ========== */
+@keyframes xcp-particle {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--xcp-px, 20px), var(--xcp-py, -30px)) scale(0); }
+}
+
+.xcp-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 14px;
+  animation: xcp-particle 0.8s ease-out forwards;
+  z-index: 99999;
+}
+
+/* ========== ICON REPLACEMENT (FIXED — preserves counts) ========== */
+.xcp-icon-replaced {
+  position: relative;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.xcp-icon-replaced > div:first-child svg,
+.xcp-icon-replaced svg:first-child {
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+}
+
+.xcp-icon-replaced::before {
+  content: attr(data-xcp-icon);
+  font-size: 16px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.xcp-icon-replaced span[data-testid] {
+  display: inline !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* ========== HIDDEN TWEET ========== */
+.xcp-hidden-tweet {
+  display: none !important;
+}
+
+/* ========== CUSTOM FEED FILTERED ========== */
+.xcp-feed-filtered {
+  display: none !important;
+}
+
+/* ========== DISLIKE BUTTON ========== */
+.xcp-dislike-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 999px;
+  transition: background 0.2s ease, transform 0.15s ease;
+  position: relative;
+  margin-left: 4px;
+}
+
+.xcp-dislike-btn:hover {
+  background: rgba(255, 68, 102, 0.1);
+  transform: scale(1.1);
+}
+
+.xcp-dislike-btn:active {
+  transform: scale(0.95);
+}
+
+.xcp-dislike-icon {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+  filter: grayscale(0.5);
+}
+
+.xcp-dislike-btn:hover .xcp-dislike-icon {
+  filter: grayscale(0);
+}
+
+.xcp-dislike-btn.xcp-disliked .xcp-dislike-icon {
+  filter: grayscale(0);
+  transform: scale(1.15);
+}
+
+.xcp-dislike-btn.xcp-disliked {
+  background: rgba(255, 68, 102, 0.15);
+}
+
+@keyframes xcp-dislike-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1.15); }
+}
+
+.xcp-dislike-btn.xcp-disliked .xcp-dislike-icon {
+  animation: xcp-dislike-pop 0.3s ease forwards;
+}
+
+/* ========== TIMED MUTE BADGE ========== */
+.xcp-timed-mute-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255,170,0,0.15);
+  color: #ffaa00;
+}
+
+/* ========== CUSTOM FEED TAB ========== */
+[data-xcp-feed-tab] {
+  cursor: pointer !important;
+}
+
+[data-xcp-feed-tab][aria-selected="true"] {
+  font-weight: 700 !important;
+}
+
+[data-xcp-feed-tab][aria-selected="true"]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--xcp-accent, #7b61ff);
+}
+
+/* ========== DRAGGABLE HANDLES ========== */
+.xcp-drag-handle {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border-radius: 6px;
+  cursor: grab;
+  font-size: 14px;
+  z-index: 100001;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  user-select: none;
+}
+
+.xcp-drag-handle:active {
+  cursor: grabbing;
+}
+
+article[data-testid="tweet"]:hover .xcp-drag-handle {
+  opacity: 1;
+}
+
+.xcp-drag-reset {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,68,102,0.8);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 100001;
+  transition: background 0.2s ease;
+}
+
+.xcp-drag-reset:hover {
+  background: rgba(255,68,102,1);
+}
+
+/* ========== VOLUME SLIDER ========== */
+.xcp-volume-slider {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.xcp-vol-label {
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.xcp-vol-range {
+  -webkit-appearance: none;
+  width: 100px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+  outline: none;
+}
+
+.xcp-vol-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--xcp-accent, #7b61ff);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(123,97,255,0.5);
+}
+
+/* ========== THEME VARS ========== */
+:root {
+  --xcp-accent: #7b61ff;
+}
