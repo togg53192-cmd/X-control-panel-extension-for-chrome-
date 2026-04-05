@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X Control Panel</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="panel">
+    <header class="panel-header">
+      <div class="header-left">
+        <span class="logo">X</span>
+        <h1>Control Panel</h1>
+      </div>
+      <div class="header-right">
+        <label class="master-toggle">
+          <input type="checkbox" id="masterToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="general">General</button>
+      <button class="tab" data-tab="appearance">Themes</button>
+      <button class="tab" data-tab="icons">Icons</button>
+      <button class="tab" data-tab="users">Users</button>
+      <button class="tab" data-tab="dislike">Dislike</button>
+      <button class="tab" data-tab="timedmute">Timeout</button>
+      <button class="tab" data-tab="customfeed">Feed</button>
+      <button class="tab" data-tab="notify">Notify</button>
+      <button class="tab" data-tab="gallery">Gallery</button>
+      <button class="tab" data-tab="css">CSS</button>
+      <button class="tab" data-tab="effects">Effects</button>
+      <button class="tab" data-tab="share">Share</button>
+      <button class="tab" data-tab="output">Output</button>
+      <button class="tab" data-tab="data">Data</button>
+    </nav>
+
+    <div class="tab-content">
+
+      <!-- ============ GENERAL ============ -->
+      <section class="tab-pane active" id="tab-general">
+        <div class="section-title">Timeline Controls</div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Hide Promoted Tweets</span><span class="setting-desc">Remove ads from timeline</span></div><label class="toggle"><input type="checkbox" id="hidePromoted" checked><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Hide "Who to Follow"</span><span class="setting-desc">Remove follow suggestions</span></div><label class="toggle"><input type="checkbox" id="hideWhoToFollow"><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Hide "Topics to Follow"</span><span class="setting-desc">Remove topic suggestions</span></div><label class="toggle"><input type="checkbox" id="hideTopicsToFollow"><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Hide All Suggested Content</span><span class="setting-desc">Hide all suggestions, trends, topics in timeline</span></div><label class="toggle"><input type="checkbox" id="hideSuggestedContent"><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Compact Mode</span><span class="setting-desc">Reduce spacing between tweets</span></div><label class="toggle"><input type="checkbox" id="compactMode"><span class="toggle-slider"></span></label></div>
+
+        <div class="section-title">Link & Media</div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Bypass t.co Redirects</span><span class="setting-desc">Go directly to links instead of through t.co</span></div><label class="toggle"><input type="checkbox" id="bypassTcoLinks"><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Custom Volume Control</span><span class="setting-desc">Override video volume (up to 300%)</span></div><label class="toggle"><input type="checkbox" id="customVolumeEnabled"><span class="toggle-slider"></span></label></div>
+        <div class="setting-row" id="volumeLevelRow" style="display:none;"><div class="setting-info"><span class="setting-label" id="volumeLabel">Volume: 100%</span><span class="setting-desc">Drag above 100% for amplification</span></div><input type="range" id="volumeLevel" min="0" max="300" value="100" class="range-slider"></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Draggable Tweets</span><span class="setting-desc">Drag handle appears on hover to move tweets/videos</span></div><label class="toggle"><input type="checkbox" id="draggableTweets"><span class="toggle-slider"></span></label></div>
+
+        <div class="section-title">Hide Sidebar Items</div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Hide Creator Studio</span></div><label class="toggle"><input type="checkbox" id="hideCreatorStudio"><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Hide Premium</span></div><label class="toggle"><input type="checkbox" id="hidePremium"><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Hide Grok</span></div><label class="toggle"><input type="checkbox" id="hideGrok"><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Hide Messages</span></div><label class="toggle"><input type="checkbox" id="hideMessages"><span class="toggle-slider"></span></label></div>
+
+        <div class="section-title">Grok Content</div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Block Grok Tweets</span><span class="setting-desc">Hide Grok AI tweets and replies</span></div><label class="toggle"><input type="checkbox" id="blockGrokTweets"><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Block Grok Summaries</span><span class="setting-desc">Hide AI summaries</span></div><label class="toggle"><input type="checkbox" id="blockGrokSummaries"><span class="toggle-slider"></span></label></div>
+
+        <div class="section-title">Font Size</div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label" id="fontSizeLabel">100%</span></div><input type="range" id="fontSize" min="70" max="150" value="100" class="range-slider"></div>
+      </section>
+
+      <!-- ============ THEMES ============ -->
+      <section class="tab-pane" id="tab-appearance">
+        <div class="section-title">Color Themes</div>
+        <div class="theme-grid">
+          <button class="theme-btn active" data-theme="cyberpunk"><div class="theme-preview cyberpunk-prev"></div><span>Cyberpunk</span></button>
+          <button class="theme-btn" data-theme="midnight"><div class="theme-preview midnight-prev"></div><span>Midnight</span></button>
+          <button class="theme-btn" data-theme="sakura"><div class="theme-preview sakura-prev"></div><span>Sakura</span></button>
+          <button class="theme-btn" data-theme="forest"><div class="theme-preview forest-prev"></div><span>Forest</span></button>
+          <button class="theme-btn" data-theme="sunset"><div class="theme-preview sunset-prev"></div><span>Sunset</span></button>
+          <button class="theme-btn" data-theme="monochrome"><div class="theme-preview mono-prev"></div><span>Mono</span></button>
+        </div>
+        <div class="section-title">Full CSS Themes</div>
+        <p class="helper-text">Complete visual overhauls — text, backgrounds, borders. Images and videos are always protected.</p>
+        <div class="theme-grid">
+          <button class="css-theme-btn" data-csstheme="hellokitty"><div class="theme-preview hellokitty-prev"></div><span>Hello Kitty</span></button>
+          <button class="css-theme-btn" data-csstheme="anime"><div class="theme-preview anime-prev"></div><span>Anime</span></button>
+          <button class="css-theme-btn" data-csstheme="retrowave"><div class="theme-preview retrowave-prev"></div><span>Retrowave</span></button>
+          <button class="css-theme-btn" data-csstheme="terminal"><div class="theme-preview terminal-prev"></div><span>Terminal</span></button>
+          <button class="css-theme-btn" data-csstheme="pastelgoth"><div class="theme-preview pastelgoth-prev"></div><span>Pastel Goth</span></button>
+          <button class="css-theme-btn" data-csstheme="none"><div class="theme-preview none-prev"></div><span>None</span></button>
+        </div>
+        <div class="section-title">Accent Color</div>
+        <div class="color-row"><input type="color" id="accentColor" value="#7b61ff" class="color-picker"><span class="color-hex" id="accentHex">#7b61ff</span></div>
+        <div class="section-title">Background Opacity</div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label" id="bgOpacityLabel">100%</span></div><input type="range" id="bgOpacity" min="50" max="100" value="100" class="range-slider"></div>
+      </section>
+
+      <!-- ============ ICONS ============ -->
+      <section class="tab-pane" id="tab-icons">
+        <div class="section-title">Icon Preset</div>
+        <div class="preset-grid">
+          <button class="preset-btn active" data-preset="default">Default</button>
+          <button class="preset-btn" data-preset="cats">🐱 Cats</button>
+          <button class="preset-btn" data-preset="hellokitty">🎀 Kitty</button>
+          <button class="preset-btn" data-preset="pixel">👾 Pixel</button>
+          <button class="preset-btn" data-preset="emoji">😊 Emoji</button>
+          <button class="preset-btn" data-preset="minimal">◽ Min</button>
+          <button class="preset-btn" data-preset="space">🚀 Space</button>
+          <button class="preset-btn" data-preset="nature">🌿 Nature</button>
+        </div>
+        <div class="section-title">Custom Icon Replacements</div>
+        <p class="helper-text">Replace action icons with emoji. Counts (1.8K etc) stay visible.</p>
+        <div class="icon-replace-row"><span class="icon-label">❤️ Like</span><input type="text" id="iconLike" placeholder="e.g. 🐱" maxlength="4" class="icon-input"></div>
+        <div class="icon-replace-row"><span class="icon-label">🔁 Retweet</span><input type="text" id="iconRetweet" placeholder="e.g. 🔄" maxlength="4" class="icon-input"></div>
+        <div class="icon-replace-row"><span class="icon-label">💬 Reply</span><input type="text" id="iconReply" placeholder="e.g. 🗨️" maxlength="4" class="icon-input"></div>
+        <div class="icon-replace-row"><span class="icon-label">📤 Share</span><input type="text" id="iconShare" placeholder="e.g. 🚀" maxlength="4" class="icon-input"></div>
+        <div class="icon-replace-row"><span class="icon-label">🔖 Bookmark</span><input type="text" id="iconBookmark" placeholder="e.g. 📌" maxlength="4" class="icon-input"></div>
+        <div class="icon-replace-row"><span class="icon-label">✅ Verified</span><input type="text" id="iconVerified" placeholder="e.g. 👑" maxlength="4" class="icon-input"></div>
+      </section>
+
+      <!-- ============ USERS ============ -->
+      <section class="tab-pane" id="tab-users">
+        <div class="section-title">User Visibility List</div>
+        <p class="helper-text">0.0 = always hide, 1.0 = always show, 0.5 = ~50% shown.</p>
+        <div class="user-add-row"><span class="at-sign">@</span><input type="text" id="newUsername" placeholder="username" class="user-input"><input type="number" id="newVisibility" placeholder="0.5" min="0" max="1" step="0.1" class="vis-input" value="0.5"><button id="addUserBtn" class="btn-add">+ Add</button></div>
+        <div class="user-search-row"><input type="text" id="userSearch" placeholder="Search users..." class="search-input"></div>
+        <div class="quick-actions"><button class="quick-btn" data-vis="0">All: Block</button><button class="quick-btn" data-vis="0.5">All: Half</button><button class="quick-btn" data-vis="1">All: Show</button></div>
+        <div id="userList" class="user-list"></div>
+        <div class="user-stats"><span id="userCount">0 users</span><span id="hiddenCount">0 hidden</span></div>
+      </section>
+
+      <!-- ============ DISLIKE ============ -->
+      <section class="tab-pane" id="tab-dislike">
+        <div class="section-title">Dislike-Based Auto-Mute</div>
+        <p class="helper-text">Adds a 👎 button to tweets. Accounts that exceed your dislike threshold get auto-muted.</p>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Enable Dislike Button</span></div><label class="toggle"><input type="checkbox" id="enableDislike" checked><span class="toggle-slider"></span></label></div>
+        <div class="section-title">Mute Threshold</div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Min Interactions</span><span class="setting-desc">Total likes+dislikes needed</span></div><input type="number" id="minInteractions" value="10" min="5" max="100" class="vis-input"></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Dislike Ratio</span><span class="setting-desc" id="dislikeRatioDesc">Mute at 60%+</span></div><input type="range" id="dislikeRatio" min="50" max="90" value="60" class="range-slider"></div>
+        <div class="section-title">Dislike Stats</div>
+        <div id="dislikeStats" class="dislike-stats-list"><div class="empty-state">No data yet.</div></div>
+        <div class="section-title">Auto-Muted</div>
+        <div id="autoMutedList" class="user-list"><div class="empty-state">None yet.</div></div>
+        <div class="setting-row" style="margin-top:10px;"><button id="clearDislikeData" class="btn-danger btn-full">Clear All Dislike Data</button></div>
+      </section>
+
+      <!-- ============ TIMED MUTE (TIMEOUT) ============ -->
+      <section class="tab-pane" id="tab-timedmute">
+        <div class="section-title">Timed Mute (Timeout)</div>
+        <p class="helper-text">
+          Temporarily mute a user for a set duration. When the time expires, they're automatically unmuted.
+        </p>
+        <div class="user-add-row">
+          <span class="at-sign">@</span>
+          <input type="text" id="timedMuteUsername" placeholder="username" class="user-input">
+          <select id="timedMuteDuration" class="select-input">
+            <option value="15">15 min</option>
+            <option value="30">30 min</option>
+            <option value="60" selected>1 hour</option>
+            <option value="180">3 hours</option>
+            <option value="360">6 hours</option>
+            <option value="720">12 hours</option>
+            <option value="1440">24 hours</option>
+            <option value="4320">3 days</option>
+            <option value="10080">7 days</option>
+            <option value="custom">Custom...</option>
+          </select>
+          <button id="addTimedMuteBtn" class="btn-add">Mute</button>
+        </div>
+        <div id="customDurationRow" class="setting-row" style="display:none;">
+          <div class="setting-info"><span class="setting-label">Custom Duration (minutes)</span></div>
+          <input type="number" id="customDurationMin" value="120" min="1" max="43200" class="vis-input">
+        </div>
+        <div class="section-title">Currently Timed-Muted</div>
+        <div id="timedMuteList" class="user-list"><div class="empty-state">No timed mutes active.</div></div>
+      </section>
+
+      <!-- ============ CUSTOM FEED ============ -->
+      <section class="tab-pane" id="tab-customfeed">
+        <div class="section-title">Custom Feed</div>
+        <p class="helper-text">
+          Build your own feed tab. When enabled, a "Custom Feed" tab appears next to "For you" and "Following".
+          Click it to only see tweets from your selected users.
+        </p>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Enable Custom Feed Tab</span><span class="setting-desc">Adds a new tab to your timeline</span></div><label class="toggle"><input type="checkbox" id="customFeedEnabled"><span class="toggle-slider"></span></label></div>
+
+        <div class="section-title">Feed Users</div>
+        <p class="helper-text">Add users whose tweets will appear in your custom feed. Frequency = how many tweets per cycle.</p>
+        <div class="user-add-row">
+          <span class="at-sign">@</span>
+          <input type="text" id="feedUsername" placeholder="username" class="user-input">
+          <input type="number" id="feedFrequency" placeholder="1" min="1" max="10" class="vis-input" value="1">
+          <button id="addFeedSlot" class="btn-add">+ Add</button>
+        </div>
+        <div id="feedSlotList" class="user-list"></div>
+
+        <div class="section-title">Feed Preview</div>
+        <p class="helper-text">This is the order tweets will appear in your custom feed (repeating cycle):</p>
+        <div id="feedPreview" class="feed-preview"><div class="empty-state">Add users above to build your feed.</div></div>
+      </section>
+
+      <!-- ============ NOTIFICATIONS ============ -->
+      <section class="tab-pane" id="tab-notify">
+        <div class="section-title">Tweet Notifications</div>
+        <p class="helper-text">
+          Get a browser notification when someone you watch posts a new tweet.
+          The extension checks for new tweets every 2 minutes while X is open.
+        </p>
+        <div class="user-add-row">
+          <span class="at-sign">@</span>
+          <input type="text" id="notifyUsername" placeholder="username" class="user-input">
+          <button id="addNotifyUser" class="btn-add">+ Watch</button>
+        </div>
+        <div class="section-title">Watched Users</div>
+        <div id="notifyUserList" class="user-list"><div class="empty-state">No users being watched.</div></div>
+      </section>
+
+      <!-- ============ GALLERY ============ -->
+      <section class="tab-pane" id="tab-gallery">
+        <div class="section-title">Media Gallery</div>
+        <p class="helper-text">Upload images and videos to your local gallery. Click any image to copy it to clipboard for easy pasting into X replies.</p>
+        <div class="gallery-upload-row">
+          <button id="uploadMediaBtn" class="btn-primary">Upload Media</button>
+          <input type="file" id="mediaFileInput" accept="image/*,video/*" multiple style="display:none">
+          <span id="galleryCount" class="gallery-count">0 items</span>
+        </div>
+        <div class="section-title">Your Media</div>
+        <div id="galleryGrid" class="gallery-grid"><div class="empty-state">No media uploaded yet.</div></div>
+        <div id="galleryPreview" class="gallery-preview" style="display:none;">
+          <div class="gallery-preview-inner">
+            <button id="closePreview" class="btn-close">&times;</button>
+            <div id="previewContent" class="preview-content"></div>
+            <div class="preview-actions">
+              <button id="previewCopy" class="btn-primary">Copy to Clipboard</button>
+              <button id="previewDelete" class="btn-danger">Delete</button>
+            </div>
+            <div id="previewStatus" class="copy-status"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CSS ============ -->
+      <section class="tab-pane" id="tab-css">
+        <div class="section-title">Custom CSS</div>
+        <p class="helper-text">Inject custom CSS. Images/videos are protected automatically. Errors show in Output tab.</p>
+        <textarea id="customCSS" class="css-editor" placeholder="/* Your custom CSS here */"></textarea>
+        <div class="css-actions"><button id="applyCSSBtn" class="btn-primary">Apply</button><button id="clearCSSBtn" class="btn-secondary">Clear</button><button id="validateCSSBtn" class="btn-secondary">Validate</button></div>
+        <div class="section-title">Custom Script</div>
+        <textarea id="customScript" class="css-editor" placeholder="// Your custom JS here"></textarea>
+        <div class="css-actions"><button id="applyScriptBtn" class="btn-primary">Run</button><button id="clearScriptBtn" class="btn-secondary">Clear</button></div>
+        <div class="section-title">CSS Snippets</div>
+        <div class="snippet-grid">
+          <button class="snippet-btn" data-snippet="hide-metrics">Hide Metrics</button>
+          <button class="snippet-btn" data-snippet="round-avatars">Round Avatars</button>
+          <button class="snippet-btn" data-snippet="square-avatars">Square Avatars</button>
+          <button class="snippet-btn" data-snippet="full-width">Full Width</button>
+          <button class="snippet-btn" data-snippet="hide-sidebar">Hide Sidebar</button>
+          <button class="snippet-btn" data-snippet="dim-images">Dim Images</button>
+          <button class="snippet-btn" data-snippet="hide-trends">Hide Trends</button>
+          <button class="snippet-btn" data-snippet="neon-borders">Neon Borders</button>
+        </div>
+        <div class="section-title">Full Theme CSS (paste your own)</div>
+        <textarea id="customThemeCSS" class="css-editor" placeholder="/* Paste a complete theme CSS here */"></textarea>
+        <div class="css-actions"><button id="applyThemeCSSBtn" class="btn-primary">Apply Theme</button><button id="clearThemeCSSBtn" class="btn-secondary">Clear</button></div>
+      </section>
+
+      <!-- ============ EFFECTS ============ -->
+      <section class="tab-pane" id="tab-effects">
+        <div class="section-title">Visual Effects</div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Rainbow Like Animation</span></div><label class="toggle"><input type="checkbox" id="rainbowLikes"><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Smooth Animations</span></div><label class="toggle"><input type="checkbox" id="smoothAnimations" checked><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Glow Effects</span></div><label class="toggle"><input type="checkbox" id="glowEffects"><span class="toggle-slider"></span></label></div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Particles on Like</span></div><label class="toggle"><input type="checkbox" id="particlesOnLike"><span class="toggle-slider"></span></label></div>
+        <div class="section-title">Hover Effects</div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Tweet Hover Style</span></div><select id="hoverEffect" class="select-input"><option value="none">None</option><option value="lift" selected>Lift</option><option value="glow">Glow</option><option value="border-left">Left Border</option><option value="scale">Scale</option></select></div>
+        <div class="section-title">Scroll</div>
+        <div class="setting-row"><div class="setting-info"><span class="setting-label">Smooth Scroll</span></div><label class="toggle"><input type="checkbox" id="smoothScroll" checked><span class="toggle-slider"></span></label></div>
+      </section>
+
+      <!-- ============ SHARE ============ -->
+      <section class="tab-pane" id="tab-share">
+        <div class="section-title">Tweet Share Link</div>
+        <p class="helper-text">Shows the direct URL of the tweet you're viewing on X.</p>
+        <div class="share-current"><div class="share-link-row"><input type="text" id="currentTweetLink" class="share-input" readonly placeholder="Open a tweet on X..."><button id="copyTweetLink" class="btn-primary btn-copy">Copy</button></div><div id="copyStatus" class="copy-status"></div></div>
+        <div class="section-title">Quick Share</div>
+        <div class="share-options"><button id="shareAsText" class="btn-secondary btn-full">Copy as Text</button><button id="shareAsMarkdown" class="btn-secondary btn-full">Copy as Markdown</button><button id="shareClean" class="btn-secondary btn-full">Copy Clean URL</button></div>
+        <div class="section-title">Recent</div>
+        <div id="recentShares" class="recent-shares-list"><div class="empty-state">No recent shares.</div></div>
+      </section>
+
+      <!-- ============ OUTPUT ============ -->
+      <section class="tab-pane" id="tab-output">
+        <div class="section-title">Live Output Console</div>
+        <p class="helper-text">Real-time logs from custom CSS, scripts, and extension actions. Errors show here instantly.</p>
+        <div class="output-toolbar"><button id="clearOutput" class="btn-secondary">Clear</button><label class="toggle-inline"><input type="checkbox" id="autoScroll" checked><span>Auto-scroll</span></label><select id="outputFilter" class="select-input select-sm"><option value="all">All</option><option value="info">Info</option><option value="warn">Warn</option><option value="error">Error</option><option value="css">CSS</option><option value="script">Script</option><option value="action">Action</option></select></div>
+        <div id="outputConsole" class="output-console"><div class="output-line info"><span class="output-time">--:--:--</span><span class="output-tag tag-info">INFO</span><span class="output-msg">X Control Panel v3.0.0 initialized</span></div></div>
+        <div class="output-stats"><span id="outputInfoCount">0 info</span><span id="outputWarnCount">0 warnings</span><span id="outputErrorCount">0 errors</span></div>
+      </section>
+
+      <!-- ============ DATA ============ -->
+      <section class="tab-pane" id="tab-data">
+        <div class="section-title">Import / Export</div>
+        <div class="data-actions"><button id="exportBtn" class="btn-primary btn-full">Export Settings</button><button id="importBtn" class="btn-secondary btn-full">Import Settings</button><input type="file" id="importFile" accept=".json" style="display:none"></div>
+        <div class="section-title">Reset</div>
+        <button id="resetBtn" class="btn-danger btn-full">Reset All Settings</button>
+        <div class="section-title">About</div>
+        <div class="about-info"><p><strong>X Control Panel</strong> v3.0.0</p><p>Custom feed tab, t.co bypass, volume amplification, tweet notifications, draggable tweets, themes, icons, visibility, dislike filtering, timed mutes, media gallery, Grok blocking, and more.</p></div>
+      </section>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
